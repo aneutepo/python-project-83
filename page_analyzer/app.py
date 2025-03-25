@@ -7,7 +7,7 @@ load_dotenv()
 
 app = Flask(__name__)
 
-app.config['d4f5c9b1e2a3ed4567f8c9a1d1b2345d'] = os.getenv('d4f5c9b1e2a3ed4567f8c9a1d1b2345d')
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 
 @app.route("/")
