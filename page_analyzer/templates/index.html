@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    
+    <!-- Подключаем CSS файл Bootstrap через CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    
+
+
+    <header class="d-flex justify-content-center py-3">
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Анализатор страниц</a></li>
+          <li class="nav-item"><a href="/sites" class="nav-link">Сайты</a></li>
+
+        </ul>
+      </header>
+    
+
+
+  <div class="col-12 col-md-10 col-lg-8 mx-auto border rounded-3 bg-light p-5">
+    <h1 class="display-3">Анализатор страниц</h1>
+    <p class="lead">Бесплатно проверяйте сайты на SEO-пригодность</p>
+    <form action="/urls " method="post" class="d-flex justify-content-center">
+    <label for="text" class="visually-hidden">Url для проверки</label>
+    <input type="text" name="url" placeholder="https://www.example.com" value="" class="form-control form-control-lg" required="">
+    <input type="submit" class="btn btn-primary  btn-lg ms-3 px-5 text-uppercase mx-3" value="Проверить">
+</form>
+  </div>
+
+
+    <!-- Подключаем JS файл Bootstrap через CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
