@@ -23,27 +23,29 @@ class URL(db.Model):
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
 
 # Главная страница с формой ввода
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
-
-@app.route('/add', methods=['GET', 'POST'])
-def add_url():
     if request.method == 'POST':
         url = request.form.get('url', '').strip()
 
         # Валидация URL
         if not url:
             flash("URL не может быть пустым.")
-            return redirect(url_for('add_url'))
+            return redirect(url_for('index'))
 
         if len(url) > 255:
             flash("URL не должен превышать 255 символов.")
-            return redirect(url_for('add_url'))
+            return redirect(url_for('index'))
 
         if not url.startswith(('http://', 'https://')):
             flash("Неверный формат URL. Используйте http:// или https://.")
-            return redirect(url_for('add_url'))
+            return redirect(url_for('index'))
+
+        # Проверяем, есть ли уже такой URL
+        existing_url = URL.query.filter_by(name=url).first()
+        if existing_url:
+            flash("Этот URL уже добавлен.")
+            return redirect(url_for('list_urls'))
 
         # Добавление в БД
         new_url = URL(name=url)
@@ -51,11 +53,9 @@ def add_url():
         db.session.commit()
 
         flash("URL успешно добавлен.")
-        return redirect(url_for('list_urls'))  # После добавления кидаем на список
+        return redirect(url_for('list_urls'))  # После добавления перенаправляем
 
-    return render_template('add.html')  # Если `GET`, рендерим страницу с формой
-
-
+    return render_template('index.html')  # Рендерим главную
 
 
 
