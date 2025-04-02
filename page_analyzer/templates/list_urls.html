@@ -6,6 +6,14 @@
     <title>Список сайтов</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список сайтов</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
 <body>
     <div class="container mt-4">
         <h1>Список добавленных сайтов</h1>
@@ -24,6 +32,7 @@
                     <th>ID</th>
                     <th>URL</th>
                     <th>Дата добавления</th>
+                    <th>Последняя проверка</th> <!-- Новая колонка -->
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +41,13 @@
                         <td>{{ url.id }}</td>
                         <td><a href="{{ url_for('view_url', id=url.id) }}">{{ url.name }}</a></td>
                         <td>{{ url.created_at }}</td>
+                        <td>
+                            {% if url.checks %}
+                                {{ url.checks[-1].created_at }}
+                            {% else %}
+                                Нет проверок
+                            {% endif %}
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
