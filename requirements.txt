@@ -4,7 +4,7 @@ Flask==3.1.0
 Flask-SQLAlchemy==3.1.1
 greenlet==3.1.1
 gunicorn==23.0.0
--e git+ssh://git@github.com/aneutepo/python-project-83.git@390b8ccc082522b84be9cf2fff93727a457fc7b2#egg=hexlet_code
+-e git+https://github.com/aneutepo/python-project-83.git@390b8ccc082522b84be9cf2fff93727a457fc7b2#egg=hexlet_code
 itsdangerous==2.2.0
 Jinja2==3.1.6
 MarkupSafe==3.0.2
