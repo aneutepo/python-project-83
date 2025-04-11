@@ -48,7 +48,7 @@ def get_url(connection, action, value=None):
 def get_url_check_result(connection, _id):
     with connection as con:
         with con.cursor(cursor_factory=NamedTupleCursor) as curs:
-            sql_id = """SELECT * FROM public.url_checks 
+            sql_id = """SELECT * FROM public.url_checks
                           WHERE id = %s ORDER BY url_id DESC;"""
             curs.execute(sql_id, (_id,))
             result = curs.fetchall()
@@ -59,7 +59,7 @@ def get_url_checks(connection):
     with connection as con:
         with con.cursor(cursor_factory=NamedTupleCursor) as curs:
             sql_select = """SELECT id, status_code, MAX(created_at)
-                           AS max_created_at FROM public.url_checks 
+                           AS max_created_at FROM public.url_checks
                            GROUP BY id, status_code"""
             curs.execute(sql_select)
             result = curs.fetchall()
@@ -79,11 +79,11 @@ def is_url_in_database(connection, url):
 
 
 def insert_check_result_with_id_url(connection, _id, status_code, h1,
-                                   title, description):
+                                    title, description):
     with connection as con:
         with con.cursor() as curs:
-            sql_all_data = """INSERT INTO public.url_checks 
-                              (id, url_id, status_code, h1, title, 
+            sql_all_data = """INSERT INTO public.url_checks
+                              (id, url_id, status_code, h1, title,
                               description)
                               VALUES (%s, default, %s, %s, %s, %s);"""
             curs.execute(sql_all_data,

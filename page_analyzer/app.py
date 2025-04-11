@@ -4,8 +4,8 @@ import os
 import psycopg2
 import validators
 import requests
-from page_analyzer.db_tools import (get_connection,
-
+from page_analyzer.db_tools import (
+    get_connection,
     get_url,
     get_url_check_result,
     get_url_checks,
@@ -17,8 +17,6 @@ from page_analyzer.url_tools import (
     get_domain,
     url_parser,
 )
-
-
 
 
 app = Flask(__name__)
@@ -61,8 +59,7 @@ def get_site():
         return redirect(url_for('get_site_information', id=id))
     else:
         flash('Некорректный URL', 'danger')
-        return render_template('index.html',
-                           value=url_for_check), 422
+        return render_template('index.html', value=url_for_check), 422
 
 
 @app.route('/urls/<int:id>')
