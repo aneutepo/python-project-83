@@ -5,7 +5,6 @@ import psycopg2
 import validators
 import requests
 from page_analyzer.db_tools import (
-    get_connection,
     get_url,
     get_url_check_result,
     get_url_checks,
