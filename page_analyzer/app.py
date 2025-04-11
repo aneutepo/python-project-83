@@ -12,7 +12,7 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 @app.route('/')
 def index():
-    return "Я живая главная страница"
+    return render_template("index.html")
 
 
 if __name__ == "__main__":

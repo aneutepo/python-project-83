@@ -16,3 +16,9 @@ build:
 
 render-start:
 	gunicorn -w 5 -b 0.0.0.0:$(PORT) page_analyzer:app
+
+git: 
+	git add .
+	git commit -m "Add new functions and fix errors"
+	git push
+	clear
